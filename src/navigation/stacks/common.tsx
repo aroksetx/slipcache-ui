@@ -1,11 +1,8 @@
 import React from 'react';
 import {NavigationStack} from '../../types';
-import {MainScreen} from '../../screens';
+import {DashboardScreen} from '../../screens';
+import {routes} from '../routes';
 
 export const commonStack: NavigationStack = [
-    {
-        private: false,
-        path: '/',
-        component: (<MainScreen/>)
-    }
+
 ]

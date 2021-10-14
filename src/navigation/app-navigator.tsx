@@ -7,10 +7,11 @@ const AppNavigator = () => {
     const routes = RoutesStack.reduce((acc: any, value) => ([
         ...acc,
         ...value.map((stackItem, i) => stackItem.private
-            ? <PrivateRoute key={i} path={stackItem.path}>2</PrivateRoute>
+            ? <PrivateRoute key={i} path={stackItem.path}>{stackItem.component}</PrivateRoute>
             : <Route key={i} path={stackItem.path}>{stackItem.component}</Route>
         )
     ]), []);
+    console.log('Log:> [app-navigator.tsx] :=', routes);
 
     return (
         <BrowserRouter
