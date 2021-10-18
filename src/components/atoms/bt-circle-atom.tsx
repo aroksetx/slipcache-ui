@@ -8,12 +8,12 @@ interface BtCircleAtomProps {
 
 export const BtCircleAtom: FunctionComponent<BtCircleAtomProps> = (props) => {
     const {
-
+        children,
     } = props;
     return (
         <Wrapper>
             <Content>
-                asd
+                {children}
             </Content>
         </Wrapper>
     );

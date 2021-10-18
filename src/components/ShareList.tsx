@@ -2,6 +2,9 @@ import React, {useState, useEffect, useRef, useCallback, useReducer, FunctionCom
 import styled from 'styled-components';
 import {UIProps} from '../types';
 import {BtCircleAtom} from './atoms';
+import { Icon } from "@chakra-ui/react"
+import { EmailIcon } from '@chakra-ui/icons'
+import { IoChatbubbleEllipsesSharp } from "react-icons/io5";
 
 interface ShareListProps {
 
@@ -19,11 +22,15 @@ export const ShareList: FunctionComponent<ShareListProps> = (props) => {
             <ActionContainer>
                 <Spline/>
                 <BtContainer>
-                    <BtCircleAtom/>
+                    <BtCircleAtom>
+                        <Icon w={12} h={12} as={IoChatbubbleEllipsesSharp} />
+                    </BtCircleAtom>
                     <div className={'title'}>SMS</div>
                 </BtContainer>
                 <BtContainer>
-                    <BtCircleAtom/>
+                    <BtCircleAtom>
+                        <Icon w={12} h={12} as={EmailIcon} />
+                    </BtCircleAtom>
                     <div className={'title'}>Email</div>
                 </BtContainer>
             </ActionContainer>
@@ -49,6 +56,7 @@ const ActionContainer = styled.div`
   position: relative;
   justify-content: space-between;
   margin-top: 30px;
+  padding: 0 20px;
 `;
 
 const Spline = styled.div`

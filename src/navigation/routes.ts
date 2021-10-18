@@ -4,11 +4,12 @@ export const routes = {
         faq: '/faq'
     },
     app: {
-        dashboard: '/'
+        dashboard: '/',
+        public: '/:id'
     },
     auth: {
         signin: '/signin',
-        signup: 'signup',
+        signup: '/signup',
         recover: '/restore',
     }
 }

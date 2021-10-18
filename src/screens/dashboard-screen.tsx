@@ -16,7 +16,9 @@ export const DashboardScreen: FunctionComponent<DashboardScreenProps> = (props) 
         <Wrapper>
             <AppLogoAtom url={appLogo?.default} size={'l'} />
             <div className={'user-profile '}>
-                <ProfileAvatarAtom/>
+                <div className={'avatar'}>
+                    <ProfileAvatarAtom/>
+                </div>
                 <UserProfileIntroAtom/>
             </div>
             <PaymentsList/>
@@ -28,6 +30,8 @@ export const DashboardScreen: FunctionComponent<DashboardScreenProps> = (props) 
     );
 }
 
+
+
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -37,9 +41,15 @@ const Wrapper = styled.div`
   .user-profile {
     margin-top: 30px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .avatar{
+    width: 150px;
+    padding-right: 20px;
   }
 `;
 

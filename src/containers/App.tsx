@@ -9,6 +9,7 @@ import {logInUser} from '../core/store/actions/user';
 import {useAuthGuard} from '../hooks';
 import {debounce} from 'lodash';
 import {GlobalStyle} from '../styles/gloabalStylyng';
+import { ChakraProvider } from "@chakra-ui/react"
 
 const debounceLoad = debounce((callback) => {
     callback();
@@ -36,12 +37,14 @@ function App() {
     return (
         <Provider store={store}>
             <ThemeProvider theme={theme}>
+                <ChakraProvider>
                 <GlobalStyle/>
                 <Wrapper>
                     <ContentLayout>
                         <AppNavigator/>
                     </ContentLayout>
                 </Wrapper>
+                </ChakraProvider>
             </ThemeProvider>
         </Provider>
     );
