@@ -21,51 +21,46 @@ interface PaymentOption {
     onClick: Function;
 }
 
+
 export const PaymentsList: FunctionComponent<PaymentsListProps> = (props) => {
     const {} = props;
 
     const options: PaymentOption[] = [
         {
             icon: paymentPaypal,
-            onClick: () => {
-            },
+            onClick: () => window.open(`https://www.paypal.me/link`),
             title: ''
         },
         {
             icon: paymentVenmo,
-            onClick: () => {
-            },
+            onClick: () =>  window.open(`https://Venmo.com/code?user_id=userid`),
             title: ''
         },
         {
             icon: paymentCashApp,
-            onClick: () => {
-            },
+            onClick: () => window.open(`https://cash.app/userid`),
             title: ''
         },
         {
             icon: paymentCash,
-            onClick: () => {
-            },
+            onClick: () => window.open(`sms:234234234234`),
             title: ''
         }, {
             icon: paymentMessenger,
-            onClick: () => {
-            },
+            onClick: () => window.open(`https://m.me/USERI`),
             title: ''
         }, {
             icon: paymentInsta,
-            onClick: () => {
-            },
+            onClick: () => window.open(`https://instagram.com/USERI`),
             title: ''
         }, {
             icon: paymentGpay,
-            onClick: () => {
-            },
+            onClick: () => window.open(`https://instagram.com/USERI`),
             title: ''
         }, {
             icon: paymentSlip,
             onClick: () => {
+                //https://instagram.com/<?php echo $user['instagramlink']; ?>
             },
             title: ''
         }

@@ -18,13 +18,14 @@ const debounceLoad = debounce((callback) => {
 
 
 function App() {
-    const auth = useAuthGuard();
+
 
     useEffect(() => {
-        if(auth?.isAuthorized && auth?.isAuthSection()){
-            window.location.href = '/';
-        }
-    }, [auth])
+        debounceLoad(() => {
+            store.dispatch(loadUserInfo.request(null, null))
+        })
+    }, [])
+
 
     return (
         <Provider store={store}>

@@ -3,15 +3,16 @@ import styled from 'styled-components';
 import {UIProps} from '../../types';
 
 interface BtCircleAtomProps {
-
+    url?:string;
 }
 
 export const BtCircleAtom: FunctionComponent<BtCircleAtomProps> = (props) => {
     const {
+        url,
         children,
     } = props;
     return (
-        <Wrapper>
+        <Wrapper href={url} target={'_blank'}>
             <Content>
                 {children}
             </Content>
@@ -19,7 +20,7 @@ export const BtCircleAtom: FunctionComponent<BtCircleAtomProps> = (props) => {
     );
 }
 
-const Wrapper = styled.div`
+const Wrapper = styled.a`
   width: 100px;
   height: 100px;
   background-color: ${(props: UIProps) => props.theme.colors.grey};

@@ -2,18 +2,27 @@ import React, {useState, useEffect, useRef, useCallback, useReducer, FunctionCom
 import styled from 'styled-components';
 
 interface UserProfileIntroAtomProps {
-
+    firstName?: string;
+    lastName?: string;
+    description?: string
 }
 
 export const UserProfileIntroAtom: FunctionComponent<UserProfileIntroAtomProps> = (props) => {
     const {
-
+        description,
+        lastName,
+        firstName
     } = props;
+
+    const _generateTitle = () => {
+        return `${firstName || '-'} ${lastName || '-'}`;
+    }
+
     return (
         <Wrapper>
-            <Title>SLIP CASH</Title>
+            <Title>{`${_generateTitle()}`}</Title>
             <Description>
-                Please tap your preferred method of payment
+                {description || '-'}
             </Description>
         </Wrapper>
     );
@@ -25,6 +34,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   margin-top: 20px;
   margin-bottom: 30px;
+  width: 100%;
 `;
 
 

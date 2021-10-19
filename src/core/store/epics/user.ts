@@ -67,6 +67,10 @@ export const loadUserInfoEpic: Epic<RootAction, RootAction, RootState> = (action
                         window.localStorage.clear();
                         window.location.href = routes.auth.signin;
                     } else{
+
+                        if(data?.isAutorized == null && isAuthPage){
+                            window.location.href = '/';
+                        }
                         return of(loadUserInfo.success(data));
                     }
                 })

@@ -3,15 +3,16 @@ import {AppLogoAtom, ProfileAvatarAtom, UserProfileIntroAtom} from '../component
 import styled from 'styled-components';
 import {PaymentsList, ShareList} from '../components';
 import {UIProps} from '../types';
+import {useTypedSelector} from '../core/store/selectors/type-selector';
 const appLogo = require('./../assets/images/logo.png')
 interface DashboardScreenProps {
 
 }
 
 export const DashboardScreen: FunctionComponent<DashboardScreenProps> = (props) => {
-    const {
-
-    } = props;
+    const {} = props;
+    const {profile} = useTypedSelector(({user}) => user);
+    console.log('Log:> [dashboard', profile);
     return (
         <Wrapper>
             <AppLogoAtom url={appLogo?.default} size={'l'} />
@@ -19,7 +20,9 @@ export const DashboardScreen: FunctionComponent<DashboardScreenProps> = (props) 
                 <div className={'avatar'}>
                     <ProfileAvatarAtom/>
                 </div>
-                <UserProfileIntroAtom/>
+                <UserProfileIntroAtom
+                    lastName={profile?.lastName}
+                    firstName={profile?.firstName}/>
             </div>
             <PaymentsList/>
             <ShareList/>
@@ -45,6 +48,7 @@ const Wrapper = styled.div`
     justify-content: center;
     align-items: center;
     margin-bottom: 10px;
+    width: 100%;
   }
   
   .avatar{

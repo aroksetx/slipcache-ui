@@ -7,12 +7,13 @@ import { EmailIcon } from '@chakra-ui/icons'
 import { IoChatbubbleEllipsesSharp } from "react-icons/io5";
 
 interface ShareListProps {
-
+    email?:string;
+    nick?:string;
 }
 
 export const ShareList: FunctionComponent<ShareListProps> = (props) => {
     const {
-
+        email = ''
     } = props;
     return (
         <Wrapper>
@@ -22,13 +23,13 @@ export const ShareList: FunctionComponent<ShareListProps> = (props) => {
             <ActionContainer>
                 <Spline/>
                 <BtContainer>
-                    <BtCircleAtom>
+                    <BtCircleAtom url={`sms:?&amp;body=https://slip.cash/-test`}>
                         <Icon w={12} h={12} as={IoChatbubbleEllipsesSharp} />
                     </BtCircleAtom>
                     <div className={'title'}>SMS</div>
                 </BtContainer>
                 <BtContainer>
-                    <BtCircleAtom>
+                    <BtCircleAtom url={`mailto:${email}?subject=Mail from xyz.com`}>
                         <Icon w={12} h={12} as={EmailIcon} />
                     </BtCircleAtom>
                     <div className={'title'}>Email</div>
