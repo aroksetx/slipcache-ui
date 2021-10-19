@@ -1,15 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import {Provider} from 'react-redux';
 import store from '../core/store/store';
-import {hi, initAuthorizedApp} from '../core/store/actions/core';
 import {theme} from '../styles/ApplicationTheme';
 import styled, {ThemeProvider} from 'styled-components';
 import AppNavigator from '../navigation/app-navigator';
-import {logInUser} from '../core/store/actions/user';
-import {useAuthGuard} from '../hooks';
 import {debounce} from 'lodash';
-import {GlobalStyle} from '../styles/gloabalStylyng';
 import { ChakraProvider } from "@chakra-ui/react"
+import {useAuthGuard} from '../hooks';
+import {loadUserInfo} from '../core/store/actions/user';
 
 const debounceLoad = debounce((callback) => {
     callback();
@@ -20,25 +18,18 @@ const debounceLoad = debounce((callback) => {
 
 
 function App() {
-    const authGuard = useAuthGuard();
+    const auth = useAuthGuard();
 
     useEffect(() => {
-        console.log('Log:> [App.tsx] :=', );
-        if(authGuard.isAuthorized != null){
-            !authGuard.isAuthorized
-                ? store.dispatch(logInUser.request({
-                    password: 'Detroytmetal92!',
-                    email: 'aroksetxua@gmail.com'
-                }))
-                : store.dispatch(initAuthorizedApp())
+        if(auth?.isAuthorized && auth?.isAuthSection()){
+            window.location.href = '/';
         }
-    }, [authGuard])
+    }, [auth])
 
     return (
         <Provider store={store}>
             <ThemeProvider theme={theme}>
                 <ChakraProvider>
-                <GlobalStyle/>
                 <Wrapper>
                     <ContentLayout>
                         <AppNavigator/>

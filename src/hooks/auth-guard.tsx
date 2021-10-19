@@ -1,8 +1,9 @@
 import {storage} from '../services';
 import {useEffect, useState} from 'react';
+import {routes} from '../navigation';
 
 export const useAuthGuard = () => {
-    const [authorized, setAuthorized] = useState(null);
+    const [authorized, setAuthorized] = useState(false);
     const [token, setToken] = useState(null);
 
     useEffect(() => {
@@ -21,6 +22,7 @@ export const useAuthGuard = () => {
 
     return {
         isAuthorized: authorized,
-        getToken: token
+        getToken: token,
+        isAuthSection: () =>  window.location.href.includes(routes.auth.signin) || window.location.href.includes(routes.auth.signup)
     };
 }

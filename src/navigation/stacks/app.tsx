@@ -6,11 +6,6 @@ import {DashboardScreen, LoginScreen, SignUpScreen} from '../../screens';
 export const appStack: NavigationStack = [
     {
         private: false,
-        path: routes.app.public,
-        component: <DashboardScreen/>
-    },
-    {
-        private: false,
         path: routes.auth.signin,
         component: (<LoginScreen/>)
     },
@@ -21,6 +16,11 @@ export const appStack: NavigationStack = [
     },
     {
         private: false,
+        path: routes.app.public,
+        component: <DashboardScreen/>
+    },
+    {
+        private: true,
         path: routes.app.dashboard,
         component: <DashboardScreen/>
     },

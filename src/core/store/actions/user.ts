@@ -1,5 +1,5 @@
 import {createAsyncAction} from 'typesafe-actions';
-import {UserAuthCredentials, UserProfile} from '../../../types';
+import {UserAuthCredentials, UserProfile, UserSignUpCred} from '../../../types';
 
 const LOGIN_USER = 'user/LOGIN_USER';
 const LOGIN_USER_SUCCESS = 'user/LOGIN_USER_SUCCESS';
@@ -9,7 +9,7 @@ export const logInUser = createAsyncAction(
     LOGIN_USER,
     LOGIN_USER_SUCCESS,
     LOGIN_USER_FAILURE
-)<UserAuthCredentials, undefined, Error>();
+)<UserAuthCredentials, UserProfile, Error>();
 
 
 const LOAD_USER_INFO = 'user/LOAD_USER_INFO';
@@ -31,3 +31,14 @@ export const loadUserBalance = createAsyncAction(
     LOAD_USER_BALANCE_SUCCESS,
     LOAD_USER_BALANCE_FAILURE
 )<{userId: string}, { balance: number }, Error>();
+
+
+const SIGNUP_USER = 'user/SIGNUP_USER';
+const SIGNUP_USER_SUCCESS = 'user/SIGNUP_USER_SUCCESS';
+const SIGNUP_USER_FAILURE = 'user/SIGNUP_USER_FAILURE';
+
+export const signupUser = createAsyncAction(
+    SIGNUP_USER,
+    SIGNUP_USER_SUCCESS,
+    SIGNUP_USER_FAILURE
+)<UserSignUpCred, UserProfile, Error>();

@@ -73,9 +73,9 @@ export const PaymentsList: FunctionComponent<PaymentsListProps> = (props) => {
 
     return (
         <Wrapper>
-            {options.map((option) => {
+            {options.map((option, index) => {
                 return (
-                    <BtWrapper>
+                    <BtWrapper key={index}>
                         <BtPaymentAtom size={'auto'}>
                             <PaymentIcon src={option?.icon}/>
                         </BtPaymentAtom>

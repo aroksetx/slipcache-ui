@@ -7,18 +7,22 @@ export interface SignInResponse {
     token: string;
 }
 
-export interface UserProfile {
-    email?: string;
-    telegram?: string;
+export interface UserProfile extends UserAuthCredentials {
     firstName?: string;
-    slaveServerId?: string;
-    userRole?: string;
+    lastName?: string;
+    status?: string;
+    email?: string;
     username?: string;
-    region?: string;
-    createdAtLeastOnePhone?: boolean;
-    api_key?: string;
-    id?: string;
+    uname?: string;
+    sessionToken?: string;
     timestamp?: number;
     createdTimestamp?: number;
     updatedTimestamp?: number;
+    objectId?: string;
 }
+
+
+export interface UserSignUpCred extends UserProfile {
+
+}
+

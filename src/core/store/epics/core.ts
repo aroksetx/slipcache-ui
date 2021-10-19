@@ -4,7 +4,6 @@ import { idle, initAuthorizedApp} from '../actions/core';
 import {catchError, debounce, filter, last, switchMap, withLatestFrom} from 'rxjs/operators';
 import {concat, interval, of} from 'rxjs';
 import {loadUserInfo} from '../actions/user';
-import {loadUserPhones} from '../actions/phones';
 
 
 
@@ -16,7 +15,6 @@ export const initAuthorizedEpic: Epic<RootAction, RootAction, RootState> = (acti
         switchMap(() => {
             return concat(
                 of(loadUserInfo.request(null, null)),
-                of(loadUserPhones.request(null))
             )
         }),
         catchError((error: Error) => {return of(idle())})

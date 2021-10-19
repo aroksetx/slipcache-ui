@@ -1,8 +1,9 @@
 import Axios, {AxiosInstance, Method} from 'axios';
 import {AnyJson, JsonMap} from '../types';
 import {storage} from '../services';
+import {isEmpty} from 'lodash';
 
-export const API_ENDPOINT = "https://iproxy.online/api"
+export const API_ENDPOINT = "http://localhost:3040"
 
 
 class Api {
@@ -50,11 +51,20 @@ class Api {
     };
 
     private initialize() {
-        this.axios = Axios.create({
+        const token = JSON?.parse(window?.localStorage?.getItem('system/token'));
+        let config: any = {
             baseURL: API_ENDPOINT,
             timeout: 60000
-            // headers: {'X-Custom-Header': 'foobar'}
-        });
+        }
+
+        if(!isEmpty(token)){
+            config = {
+                ...config,
+                headers: {'x-auth-token': token}
+            }
+        }
+
+        this.axios = Axios.create(config);
 
         this.axios.interceptors.request.use(async (config) => {
             // Do something before request is sent
